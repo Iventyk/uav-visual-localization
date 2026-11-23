@@ -60,7 +60,7 @@ Test set: subset 06, 344 drone photos; its GPS labels are read only in the final
 
 1. **Tiles.** The 8082×9780 px map is cut into tiles at three scales (3:2, like the drone photos) with a 336 px stride; each tile is also rotated by 180°, because the drone's heading is unknown.
 2. **Coarse retrieval.** DINOv2 ViT-B/14 embeds photos and tiles; cosine similarity picks the 8 most similar, spatially distinct tiles.
-3. **Refinement.** Keypoints of the photo are matched with a 2500×1700 px map region around each candidate, a MAGSAC homography projects the photo centre onto the map, and strict checks (matches, inliers, inlier share) decide whether to trust it. Otherwise the centre of the best tile is used.
+3. **Refinement.** Keypoints of the photo are matched with a 2500×1700 px map region around each candidate, a MAGSAC++ homography projects the photo centre onto the map, and strict checks (matches, inliers, inlier share) decide whether to trust it. Otherwise the centre of the best tile is used.
 4. **Coordinates.** Map pixels are converted to latitude and longitude with the map bounds.
 5. **Experiments.** (1) SuperPoint + LightGlue instead of SIFT, with the same thresholds; (2) median of the predictions over 5 neighbouring frames. Settings were fixed in advance, not tuned on the test set.
 
